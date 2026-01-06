@@ -1,6 +1,11 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors()); // <-- gör att Hoppscotch/Browser får posta
+app.options("*", cors()); // <-- svarar på preflight
+
 app.use(express.json({ limit: "5mb" }));
 
 const N8N_BASE_URL = process.env.N8N_BASE_URL;
